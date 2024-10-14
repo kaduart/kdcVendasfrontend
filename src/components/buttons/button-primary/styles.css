@@ -1,0 +1,5 @@
+.kdc-btn-blue {
+    border: none;
+    background-color: var(--kdc-color-btn-primary);
+    color: var(--kdc-color-btn-inverse);
+  }
