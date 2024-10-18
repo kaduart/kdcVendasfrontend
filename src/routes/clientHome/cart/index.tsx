@@ -50,13 +50,13 @@ export default function Cart() {
 
     function handlePlaceOrderClick() {
         if (cartItems) {
+
             orderService.placeOrderRequest(cartItems)
                 .then((response) => {
                     cartService.clearCart();
                     setContextCartCount(0);
                     navigate(`/confirmation/${response.data.id}`);
                 });
-
         }
     }
 
@@ -75,7 +75,7 @@ export default function Cart() {
                                 <div className="kdc-card kdc-mb20">
                                     {
                                         cart.items.map(item =>
-                                            <div className="kdc-cart-item-container kdc-line-bottom">
+                                            <div key={item.productId} className="kdc-cart-item-container kdc-line-bottom">
                                                 <div className="kdc-cart-item-left">
                                                     <img src={item.imgUrl} alt="Computador" />
                                                     <div className="kdc-cart-item-description">

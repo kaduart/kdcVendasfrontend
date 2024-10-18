@@ -37,7 +37,6 @@ export default function Catalog() {
     }, [queryParams]);
 
     function handleNewSearchValue(value: string) {
-        console.log('buscaaaaa', value);
         setProducts([]);
 
         setQueryParams({
@@ -49,7 +48,7 @@ export default function Catalog() {
     }
 
     function handleClickEvent(event: number) {
-        console.log('maissss', event);
+
         setQueryParams({
             ...queryParams,
             page: event,
@@ -57,6 +56,7 @@ export default function Catalog() {
             name: queryParams.name
         });
     }
+
     return (
         <main>
             <section id="catalog-section" className="kdc-container">

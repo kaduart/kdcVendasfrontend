@@ -42,10 +42,11 @@ export function getAccessTokenPayload(): AccessTokenPayloadDTO | undefined {
     try {
 
         const token = accessTokenRepository.get();
+
         return token == null
             ? undefined
             : (jwtDecode(token) as AccessTokenPayloadDTO);
-        console.log('toooken', token);
+
     } catch (error) {
         return undefined;
     }
@@ -65,7 +66,7 @@ export function hasAnyRoles(roles: RoleEnum[]): boolean {
 
     if (tokenPayload !== undefined) {
         roles.some(role => tokenPayload.authorities.includes(role));
-        
+
         for (const role of roles) {
 
             if (tokenPayload !== undefined && tokenPayload.authorities.includes(role)) {

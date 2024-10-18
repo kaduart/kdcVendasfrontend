@@ -6,7 +6,6 @@ import Cart from './routes/clientHome/cart';
 import { useEffect, useState } from 'react';
 import { ContextCartCount } from './utils/context-cart';
 import Login from './routes/clientHome/login';
-import InitialPage from './routes/admin/adminHome';
 import Admin from './routes/admin';
 import { unstable_HistoryRouter as HistoryRouter } from 'react-router-dom';
 import { history } from './utils/history';
@@ -16,6 +15,9 @@ import { ContextToken } from './utils/context-token';
 import * as authService from './services/auth-service';
 import * as cartervice from './services/cart-service';
 import Confirmation from './routes/confirmation';
+import AdminHome from './routes/admin/adminHome';
+import ManageProducts from './routes/admin/manageProducts';
+import ProductsForm from './routes/admin/productsForm';
 export default function App() {
 
   const [contextCartCount, setContextCartCount] = useState<number>(0);
@@ -45,8 +47,11 @@ export default function App() {
                   <Admin />
                 </PrivateRoute>
               } >
-              <Route index element={<InitialPage />} />
-              <Route path='initial-page' element={<InitialPage />} />
+              <Route index element={< Navigate to={"/admin/home"} />} />
+              <Route path='home' element={<AdminHome />} />
+              <Route path='products' element={<ManageProducts />} />
+              <Route path='products/:productId' element={<ProductsForm />} />
+
             </Route>
 
             <Route path="/" element={<ClienteHome />} >
@@ -55,11 +60,11 @@ export default function App() {
               <Route path='cart' element={<Cart />} />
               <Route path='product-details/:productId' element={<ProductDetails />} />
               <Route path='login' element={<Login />} />
-              <Route path='confirmation/:orderId' element={ <PrivateRoute><Confirmation /></PrivateRoute>} />
+              <Route path='confirmation/:orderId' element={<PrivateRoute><Confirmation /></PrivateRoute>} />
             </Route>
 
-            <Route path='*' element={<Navigate to="/" />} />
-
+          {/*   <Route path='*' element={<Navigate to="/" />} />
+ */}
           </Routes>
         </HistoryRouter>
 

@@ -17,7 +17,6 @@ export default function ButtonNextPage({ text, onClickEvent }: Props) {
       
         const nextPage = page + 1;
         setPage(nextPage);
-        console.log('maissss',nextPage);
 
         if (onClickEvent) {
             onClickEvent(nextPage)

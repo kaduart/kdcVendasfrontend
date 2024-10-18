@@ -9,6 +9,7 @@ import './styles.css';
 import * as productService from '../../../services/product-service';
 import * as cartService from '../../../services/cart-service';
 import { ContextCartCount } from '../../../utils/context-cart';
+import { Link } from 'react-router-dom';
 
 export default function ProductDetails() {
 
@@ -20,12 +21,12 @@ export default function ProductDetails() {
     const [product, setProduct] = useState<Product>();
 
     useEffect(() => {
-        console.log(params)
+
         productService.findById(Number(params.productId))
             .then((response) => {
                 if (response && response.status === 200) {
                     const prod = response.data as Product;
-                    console.log(response)
+
                     setProduct(prod);
                 }
             })
@@ -55,7 +56,11 @@ export default function ProductDetails() {
                     <div className="" onClick={handleBuyClick}>
                         <ButtonPrimary text="Buy now" />
                     </div>
-                    <ButtonPrimaryInverse text="Init" />
+
+                    <Link to="/">
+                        <ButtonPrimaryInverse text="Init" />
+                    </Link>
+
                 </div>
             </section>
         </main>

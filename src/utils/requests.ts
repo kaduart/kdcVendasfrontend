@@ -8,7 +8,7 @@ export function requestBackend(config: AxiosRequestConfig) {
     const headers = config.withCredentials
         ? {
             ...config.headers,
-            Aurthorization: `Bearer ${authService.getAccessToken()}`
+            Authorization: `Bearer ${authService.getAccessToken()}`
         }
         : config.headers;
 
@@ -34,17 +34,13 @@ axios.interceptors.response.use(
         return response;
     },
     function (error) {
-        console.log('deu 401', error)
 
         switch (error.response.status) {
             case 401:
-                console.log('deu 401')
                 history.push("/login");
                 break;
             case 403:
-                console.log('deu 403')
                 history.push("/catalog");
-
                 break;
 
             default:
