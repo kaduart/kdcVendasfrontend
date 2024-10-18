@@ -6,11 +6,6 @@ import { ContextToken } from '../../../utils/context-token';
 import FormInput from '../../../components/formInput';
 import * as forms from '../../../utils/forms';
 
-type FormData = {
-    username: string,
-    password: string
-}
-
 
 export default function Login() {
 
@@ -66,7 +61,7 @@ export default function Login() {
 
                 navigate("/cart");
             })
-            .catch((error: any) => {
+            .catch(() => {
                 setSubmitResponseFail(true);
             });
 

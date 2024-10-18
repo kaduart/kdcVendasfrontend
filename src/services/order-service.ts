@@ -1,5 +1,4 @@
 import { AxiosRequestConfig } from "axios";
-import * as authService from './auth-service';
 import { requestBackend } from "../utils/requests";
 import { OrderDTO } from "../models/order";
 

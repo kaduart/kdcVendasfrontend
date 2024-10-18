@@ -82,8 +82,6 @@ export function validateAll(inputs: any) {
 }
 
 export function dirtyAndValidateAll(inputs: any) {
-    const newFormData = toDirtyAll(inputs);
-
     return validateAll(toDirtyAll(inputs));
 }
 export function hasAnyInvalid(inputs: any) {

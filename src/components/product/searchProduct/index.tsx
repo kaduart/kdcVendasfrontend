@@ -8,11 +8,8 @@ type Props = {
 
 export default function Search({ onSearchValue }: Props) {
 
-    const [newSearch, setNewSearch] = useState();
-
     function handleSearch(event: any) {
         const searchValue = event.target.value;
-        setNewSearch(searchValue)
 
         if (onSearchValue)
             onSearchValue(searchValue);

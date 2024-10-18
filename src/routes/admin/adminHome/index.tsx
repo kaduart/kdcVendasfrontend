@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { UserDTO } from "../../../models/user";
-import { findMe } from "../../../services/user-service";
 import * as userSevrice from "../../../services/user-service";
 export default function AdminHome() {
 

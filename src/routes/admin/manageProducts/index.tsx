@@ -1,7 +1,6 @@
 import './styles.css';
 import editImg from '../../../assets/images/edit.svg';
 import deletImg from '../../../assets/images/delete.svg';
-import pcImg from '../../../assets/images/computer.png';
 import { useEffect, useState } from 'react';
 import { Product } from '../../../models/product';
 import * as productService from '../../../services/product-service';
@@ -41,9 +40,9 @@ export default function ManageProducts() {
 
     const [isLastPage, setLastPage] = useState(false)
     const [products, setProducts] = useState<Product[]>([]);
-    const [erro, setErro] = useState();
 
     useEffect(() => {
+
         productService.findPageRequest(queryParams.page, queryParams.name, queryParams.size)
             .then((response: any) => {
                 const nextPageList = response.data.content;
@@ -51,9 +50,8 @@ export default function ManageProducts() {
                 setLastPage(response.data.last);
 
                 setProducts(products.concat(nextPageList));
-            }).catch((error: any) =>
-                setErro(error.response.data)
-            );
+            });
+
     }, [queryParams]);
 
     function handleNewSearchValue(value: string) {
@@ -68,7 +66,7 @@ export default function ManageProducts() {
     }
 
     function handleClickEvent(event: number) {
-        
+
         setQueryParams({
             ...queryParams,
             page: event,
@@ -100,7 +98,7 @@ export default function ManageProducts() {
         setDialogConfirmationData({ ...dialogConfirmationData, visible: false });
     }
 
-    function handleDialogInfoClose(event: any) {
+    function handleDialogInfoClose() {
         setDialogInfoData({ ...dialogInfoData, visible: false });
 
     }

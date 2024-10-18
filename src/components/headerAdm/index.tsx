@@ -1,7 +1,6 @@
 import './styles.css';
 import productsImg from '../../assets/images/products.svg';
 import homeImg from '../../assets/images/home.svg';
-import { Link } from 'react-router-dom';
 import LoggedUser from '../loggedUser';
 import { NavLink } from 'react-router-dom';
 
